@@ -17,7 +17,9 @@ TEST_CASE("Corner Cases")
 TEST_CASE("Single Numbers")
 {
     REQUIRE(strcalc("1") == 1);
-   // REQUIRE(strcalc("7") == 7);
+    REQUIRE(strcalc("7") == 7);
+    REQUIRE(strcalc("999") == 999);
+    REQUIRE(strcalc("2000") == 0);
 }
 
 

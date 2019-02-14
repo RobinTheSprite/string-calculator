@@ -7,15 +7,16 @@
 
 int strcalc(std::string s)
 {
-    int answer;
+    int answer = 0;
     std::stringstream singleNumberTest(s);
-    if (s.empty())
+    if (singleNumberTest && !s.empty())
     {
-        answer = 0;
-    }
-    else if (singleNumberTest)
-    {
-        singleNumberTest >> answer;
+        int test;
+        singleNumberTest >> test;
+        if (test <= 1000)
+        {
+            answer = test;
+        }
     }
 
     return answer;
