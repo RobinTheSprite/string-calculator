@@ -10,10 +10,27 @@ int strcalc(string s)
 {
     int answer = 0;
     string delimiter = ",";
-    if (s.front() == '/' && *(begin(s) + 1) == '/')
+    if (s.substr(0,2) == "//")
     {
-        delimiter = s[2];
-        s = s.substr(3,string::npos);
+        if (s.find_first_of('[') == 2)
+        {
+            string multiLineDelimiter;
+            for (auto c : s.substr(3, string::npos))
+            {
+                if(c == ']')
+                {
+                    break;
+                }
+                multiLineDelimiter.push_back(c);
+            }
+            delimiter = multiLineDelimiter;
+            s = s.substr(s.find(']') + 1, string::npos);
+        }
+        else
+        {
+            delimiter = s[2];
+            s = s.substr(3,string::npos);
+        }
     }
     std::stringstream singleNumberTest(s);
     if (singleNumberTest && !s.empty())

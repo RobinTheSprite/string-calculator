@@ -1,14 +1,17 @@
 //
 // Created by Mark on 2/13/2019.
 //
-
 #include "catch.hpp"
 #include "strcalc_test.h"
 #include "strcalc.h"
 
-TEST_CASE("Corner Cases")
+TEST_CASE("\"No Output\" Cases")
 {
     REQUIRE(strcalc("") == 0);
+    REQUIRE(strcalc("/") == 0);
+    REQUIRE(strcalc("/[/") == 0);
+    REQUIRE(strcalc("//[]") == 0);
+    REQUIRE(strcalc("//[") == 0);
 }
 
 TEST_CASE("Single Numbers")
@@ -23,6 +26,8 @@ TEST_CASE("Delimiters")
 {
     REQUIRE(strcalc("//$300") == 300);
     REQUIRE(strcalc("/#350") == 0);
+    REQUIRE(strcalc("//[@@]350") == 350);
+    REQUIRE(strcalc("//[#%&]400") == 400);
 }
 
 
