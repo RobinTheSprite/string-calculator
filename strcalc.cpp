@@ -36,11 +36,28 @@ int strcalc(string s)
     if (singleNumberTest && !s.empty())
     {
         int test;
-        singleNumberTest >> test;
-        if (test <= 1000)
+        int firstNumber = 0, secondNumber = 0;
+        bool firstNumberSet = false;
+        while(singleNumberTest >> test)
         {
-            answer = test;
+            if (test <= 1000)
+            {
+                if(firstNumberSet)
+                {
+                    secondNumber = test;
+                    break;
+                }
+                else
+                {
+                    firstNumber = test;
+                    firstNumberSet = true;
+                }
+            }
+            string temp = singleNumberTest.str();
+            temp.erase(0,2);
+            singleNumberTest.str(temp);
         }
+        answer = firstNumber + secondNumber;
     }
 
     return answer;
