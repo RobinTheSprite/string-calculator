@@ -32,6 +32,7 @@ TEST_CASE("Comma Delimiters")
 TEST_CASE("Newline Delimiters")
 {
     REQUIRE(strcalc("5\n6")==11);
+    REQUIRE(strcalc("1001\n1")==1);
 }
 
 TEST_CASE("Custom Delimiters")

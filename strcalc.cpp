@@ -9,7 +9,8 @@ using std::string;
 int strcalc(string s)
 {
     int answer = 0;
-    string delimiter = ",";
+    string delimiterComma = ",";
+   // string delimiterNewLine = "\n";
     if (s.substr(0,2) == "//")
     {
         if (s.find_first_of('[') == 2)
@@ -23,12 +24,12 @@ int strcalc(string s)
                 }
                 multiLineDelimiter.push_back(c);
             }
-            delimiter = multiLineDelimiter;
+            delimiterComma = multiLineDelimiter;
             s = s.substr(s.find(']') + 1, string::npos);
         }
         else
         {
-            delimiter = s[2];
+            delimiterComma = s[2];
             s = s.substr(3,string::npos);
         }
     }
@@ -53,9 +54,6 @@ int strcalc(string s)
                     firstNumberSet = true;
                 }
             }
-//            string temp = inputStream.str();
-//            temp.erase(0,2);
-//            inputStream.str(temp);
             inputStream.get();
         }
         answer = firstNumber + secondNumber;
