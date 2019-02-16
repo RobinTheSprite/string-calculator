@@ -54,3 +54,8 @@ TEST_CASE("3 Numbers , or newline delimited")
     REQUIRE(strcalc("1001,1001,1001")==0);
 }
 
+TEST_CASE("Negative Number Throws Exception")
+{
+    REQUIRE_THROWS_AS(strcalc("-1"), const char*);
+}
+
