@@ -25,6 +25,7 @@ TEST_CASE("Single Numbers")
 TEST_CASE("Standard Delimiters")
 {
     REQUIRE(strcalc("3,6") == 9);
+    REQUIRE(strcalc("10,12") == 22);
 }
 
 TEST_CASE("Custom Delimiters")

@@ -32,13 +32,13 @@ int strcalc(string s)
             s = s.substr(3,string::npos);
         }
     }
-    std::stringstream singleNumberTest(s);
-    if (singleNumberTest && !s.empty())
+    std::stringstream inputStream(s);
+    if (inputStream && !s.empty())
     {
         int test;
         int firstNumber = 0, secondNumber = 0;
         bool firstNumberSet = false;
-        while(singleNumberTest >> test)
+        while(inputStream >> test)
         {
             if (test <= 1000)
             {
@@ -53,9 +53,10 @@ int strcalc(string s)
                     firstNumberSet = true;
                 }
             }
-            string temp = singleNumberTest.str();
-            temp.erase(0,2);
-            singleNumberTest.str(temp);
+//            string temp = inputStream.str();
+//            temp.erase(0,2);
+//            inputStream.str(temp);
+            inputStream.get();
         }
         answer = firstNumber + secondNumber;
     }
