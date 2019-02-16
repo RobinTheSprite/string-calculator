@@ -22,7 +22,12 @@ TEST_CASE("Single Numbers")
     REQUIRE(strcalc("2000") == 0);
 }
 
-TEST_CASE("Delimiters")
+TEST_CASE("Standard Delimiters")
+{
+    REQUIRE(strcalc("3,6") == 9);
+}
+
+TEST_CASE("Custom Delimiters")
 {
     REQUIRE(strcalc("//$300") == 300);
     REQUIRE(strcalc("/#350") == 0);
