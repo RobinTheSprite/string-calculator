@@ -47,6 +47,10 @@ TEST_CASE("Custom Delimiters")
 
 TEST_CASE("3 Numbers , or newline delimited")
 {
-    REQUIRE(strcalc("1,1,1")==3);
+    REQUIRE(strcalc("1,2,3")==6);
+    REQUIRE(strcalc("1\n2\n3")==6);
+    REQUIRE(strcalc("1,2\n3")==6);
+    REQUIRE(strcalc("1001,1,2")==3);
+    REQUIRE(strcalc("1001,1001,1001")==0);
 }
 

@@ -4,7 +4,10 @@
 #include <string>
 using std::string;
 #include <sstream>
+using std::stringstream;
+#include <sstream>
 #include "strcalc.h"
+
 
 int strcalc(string s)
 {
@@ -35,27 +38,58 @@ int strcalc(string s)
     std::stringstream inputStream(s);
     if (inputStream && !s.empty())
     {
+
         int test;
-        int firstNumber = 0, secondNumber = 0;
-        bool firstNumberSet = false;
+        int firstNumber = 0, secondNumber = 0, thirdNumber = 0;
+        bool firstNumberSet = false, secondNumberSet = false, thirdNumberSet = false;
         while(inputStream >> test)
         {
-            if (test <= 1000)
+            if (test > 1000)
             {
-                if(firstNumberSet)
-                {
-                    secondNumber = test;
-                    break;
-                }
-                else
+                test = 0;
+                if(!firstNumberSet)
                 {
                     firstNumber = test;
                     firstNumberSet = true;
+                    inputStream.get();
+                    continue;
+                }
+                if(firstNumberSet && !secondNumberSet)
+                {
+                    secondNumber = test;
+                    secondNumberSet = true;
+                    inputStream.get();
+                    continue;
+                }
+                if(!thirdNumberSet)
+                {
+                    thirdNumber = test;
+                    break;
+                }
+
+            }else{
+                if(!firstNumberSet)
+                {
+                    firstNumber = test;
+                    firstNumberSet = true;
+                    inputStream.get();
+                    continue;
+                }
+                if(firstNumberSet && !secondNumberSet)
+                {
+                    secondNumber = test;
+                    secondNumberSet = true;
+                    inputStream.get();
+                    continue;
+                }
+                if(!thirdNumberSet)
+                {
+                    thirdNumber = test;
+                    break;
                 }
             }
-            inputStream.get();  //handles , and \n
         }
-        answer = firstNumber + secondNumber;
+        answer = firstNumber + secondNumber + thirdNumber;
     }
 
     return answer;
