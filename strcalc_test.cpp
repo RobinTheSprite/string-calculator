@@ -27,12 +27,14 @@ TEST_CASE("Comma Delimiters")
     REQUIRE(strcalc("3,6") == 9);
     REQUIRE(strcalc("10,12") == 22);
     REQUIRE(strcalc("1001,100")==100);
+    REQUIRE(strcalc("1001,1001")==0);
 }
 
 TEST_CASE("Newline Delimiters")
 {
     REQUIRE(strcalc("5\n6")==11);
     REQUIRE(strcalc("1001\n1")==1);
+    REQUIRE(strcalc("1001\n1001")==0);
 }
 
 TEST_CASE("Custom Delimiters")
@@ -43,4 +45,8 @@ TEST_CASE("Custom Delimiters")
     REQUIRE(strcalc("//[#%&]400") == 400);
 }
 
+TEST_CASE("3 Numbers , or newline delimited")
+{
+    REQUIRE(strcalc("1,1,1")==3);
+}
 

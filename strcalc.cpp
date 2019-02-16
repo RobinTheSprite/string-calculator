@@ -10,7 +10,6 @@ int strcalc(string s)
 {
     int answer = 0;
     string delimiterComma = ",";
-   // string delimiterNewLine = "\n";
     if (s.substr(0,2) == "//")
     {
         if (s.find_first_of('[') == 2)
@@ -54,7 +53,7 @@ int strcalc(string s)
                     firstNumberSet = true;
                 }
             }
-            inputStream.get();
+            inputStream.get();  //handles , and \n
         }
         answer = firstNumber + secondNumber;
     }
