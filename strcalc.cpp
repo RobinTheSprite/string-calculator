@@ -67,6 +67,9 @@ int strcalc(string s)
                     break;
                 }
 
+            }else if(test<0)
+            {
+                throw "Can't have negative numbers!";
             }else{
                 if(!firstNumberSet)
                 {
