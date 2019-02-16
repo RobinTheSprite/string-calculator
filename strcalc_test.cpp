@@ -22,11 +22,16 @@ TEST_CASE("Single Numbers")
     REQUIRE(strcalc("2000") == 0);
 }
 
-TEST_CASE("Standard Delimiters")
+TEST_CASE("Comma Delimiters")
 {
     REQUIRE(strcalc("3,6") == 9);
     REQUIRE(strcalc("10,12") == 22);
     REQUIRE(strcalc("1001,100")==100);
+}
+
+TEST_CASE("Newline Delimiters")
+{
+    REQUIRE(strcalc("5\n6")==11);
 }
 
 TEST_CASE("Custom Delimiters")
